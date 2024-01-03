@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nunes Sports - Produtos</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container mt-4">
+    <h1>Nunes Sports - Produtos</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Codigo</th>
+            <th>Descricao</th>
+            <th>Preco</th>
+            <th>Acao</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+            <tr>
+                <td>{{ product.nome }}</td>
+                <td>{{ product.cod }}</td>
+                <td>{{ product.descricao }}</td>
+                <td>{{ product.preco }}</td>
+                <td>
+                    <a href="{{ url_for('edit', id=product.id) }}">Editar</a>
+                    <a href="{{ url_for('delete', id=product.id) }}">Deletar</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ url_for('create') }}" class="btn btn-primary">Add Produto</a>
+</div>
+
+</body>
+</html>
